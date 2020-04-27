@@ -1,9 +1,11 @@
 @Library('docker-lib@master') _
 
 pipeline {
-    agent script {
-              dockerlib.call "maven:3-alpine, -v /root/.m2:/root/.m2"
+    agent {
+        script {
+              dockerlib.call "-v /root/.m2:/root/.m2, maven:3-alpine"
              }
+    }
     stages {
         stage('Build') {
             steps {
