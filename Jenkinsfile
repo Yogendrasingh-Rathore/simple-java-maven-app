@@ -1,10 +1,9 @@
+@Library('docker-lib@master') _
+
 pipeline {
-    agent {
-        docker {
-            image 'maven:3-alpine'
-            args '-v /root/.m2:/root/.m2'
-        }
-    }
+    agent script {
+              dockerlib.call "maven:3-alpine, -v /root/.m2:/root/.m2"
+             }
     stages {
         stage('Build') {
             steps {
