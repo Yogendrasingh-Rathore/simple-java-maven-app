@@ -2,10 +2,8 @@
 
 pipeline {
     agent {
-        script {
               dockerlib.call "-v /root/.m2:/root/.m2, maven:3-alpine"
-             }
-    }
+          }
     stages {
         stage('Build') {
             steps {
